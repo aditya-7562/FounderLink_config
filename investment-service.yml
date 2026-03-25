@@ -46,12 +46,39 @@ management:
       show-details: always
 
 resilience4j:
+  retry:
+    instances:
+      startupService:
+        max-attempts: 3
+        wait-duration: 500ms
+        enable-exponential-backoff: true
+        exponential-backoff-multiplier: 2
+        retry-exceptions:
+          - feign.RetryableException
+          - com.founderlink.investment.exception.StartupServiceServerException
+          - com.founderlink.investment.exception.StartupServiceUnavailableException
+        ignore-exceptions:
+          - com.founderlink.investment.exception.StartupNotFoundException
+          - com.founderlink.investment.exception.ForbiddenAccessException
   circuitbreaker:
     instances:
-      startup-service:
+      startupService:
+        sliding-window-type: COUNT_BASED
         sliding-window-size: 10
+        minimum-number-of-calls: 5
+        permitted-number-of-calls-in-half-open-state: 3
+        wait-duration-in-open-state: 30s
         failure-rate-threshold: 50
-        wait-duration-in-open-state: 10s
+        slow-call-rate-threshold: 50
+        slow-call-duration-threshold: 3s
+        automatic-transition-from-open-to-half-open-enabled: true
+        record-exceptions:
+          - feign.RetryableException
+          - com.founderlink.investment.exception.StartupServiceServerException
+          - com.founderlink.investment.exception.StartupServiceUnavailableException
+        ignore-exceptions:
+          - com.founderlink.investment.exception.StartupNotFoundException
+          - com.founderlink.investment.exception.ForbiddenAccessException
 
 logging:
   level:
