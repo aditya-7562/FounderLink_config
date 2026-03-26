@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: payment-service
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+  datasource:
+    url: jdbc:mysql://mysql:3306/payment_db?createDatabaseIfNotExist=true
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+rabbitmq:
+  dlx: founderlink.dlx
+  dlq: founderlink.dlq
+  investment:
+    created:
+      routing-key: investment.created
+    approved:
+      routing-key: investment.approved
+    rejected:
+      routing-key: investment.rejected
+  payment:
+    completed:
+      routing-key: payment.completed
+    failed:
+      routing-key: payment.failed
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      wallet-service:
+        sliding-window-size: 10
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 10s
+
+razorpay:
+  key:
+    id: ${RAZORPAY_KEY_ID}
+    secret: ${RAZORPAY_KEY_SECRET}
+
+logging:
+  level:
+    com:
+      founderlink:
+        payment: DEBUG

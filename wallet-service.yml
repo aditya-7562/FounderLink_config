@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: wallet-service
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+  datasource:
+    url: jdbc:mysql://mysql:3306/wallet_db?createDatabaseIfNotExist=true
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+logging:
+  level:
+    com:
+      founderlink:
+        wallet: DEBUG
