@@ -32,6 +32,22 @@ eureka:
   instance:
     prefer-ip-address: true
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    root: INFO
+    com.founderlink.messaging: DEBUG
+  file:
+    name: logs/messaging-service.log
+
 rabbitmq:
   exchange: founderlink.exchange
   routing-key: message.sent
