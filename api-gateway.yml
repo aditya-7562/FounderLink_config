@@ -3,7 +3,7 @@ spring:
     name: api-gateway
   cloud:
     gateway:
-       routes:
+      routes:
          # ── Swagger API-docs routes (rewrite prefix before forwarding) ──
          - id: auth-service-swagger
            uri: lb://auth-service
