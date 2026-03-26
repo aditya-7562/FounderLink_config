@@ -92,3 +92,12 @@ logging:
         auth: DEBUG
   file:
     name: logs/auth-service.log
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
