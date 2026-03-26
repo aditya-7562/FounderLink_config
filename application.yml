@@ -59,3 +59,8 @@ logging:
 # Common RabbitMQ exchange
 rabbitmq:
   exchange: founderlink.exchange
+spring:
+  rabbitmq:
+    listener:
+      simple:
+        observation-enabled: true
