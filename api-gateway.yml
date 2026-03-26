@@ -295,37 +295,17 @@ rbac:
       path: /notifications/*/read
       roles: [FOUNDER, INVESTOR, COFOUNDER, ADMIN]
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://eureka-server:8761/eureka/
-  instance:
-    prefer-ip-address: true
-
 jwt:
   secret: ${JWT_SECRET}
 
 logging:
   level:
-    root: INFO
     org.springframework.cloud.gateway: INFO
     org.springframework.web.reactive: WARN
     reactor.netty: WARN
     com.founderlink.gateway: INFO
-  file:
-    name: logs/api-gateway.log
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info
-  endpoint:
-    health:
-      show-details: always
-
-
- # Swagger UI aggregation for all services
+# Swagger UI aggregation for all services
 springdoc:
   swagger-ui:
     urls:

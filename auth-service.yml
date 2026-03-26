@@ -13,19 +13,9 @@ spring:
     url: jdbc:mysql://mysql:3306/auth_service_db?createDatabaseIfNotExist=true
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
-    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: validate
-    show-sql: true
-    database-platform: org.hibernate.dialect.MySQLDialect
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://eureka-server:8761/eureka/
-  instance:
-    prefer-ip-address: true
 
 jwt:
   secret: ${JWT_SECRET}
@@ -86,18 +76,7 @@ resilience4j:
 
 logging:
   level:
-    root: INFO
     com:
       founderlink:
         auth: DEBUG
-  file:
-    name: logs/auth-service.log
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info
-  endpoint:
-    health:
-      show-details: always
