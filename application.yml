@@ -20,6 +20,9 @@ spring:
     port: 5672
     username: ${RABBITMQ_USERNAME}
     password: ${RABBITMQ_PASSWORD}
+    listener:
+      simple:
+        observation-enabled: true
 
 eureka:
   client:
@@ -59,8 +62,3 @@ logging:
 # Common RabbitMQ exchange
 rabbitmq:
   exchange: founderlink.exchange
-spring:
-  rabbitmq:
-    listener:
-      simple:
-        observation-enabled: true
