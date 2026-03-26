@@ -1,8 +1,8 @@
 spring:
   application:
     name: api-gateway
-    cloud:
-     gateway:
+  cloud:
+    gateway:
        routes:
          # ── Swagger API-docs routes (rewrite prefix before forwarding) ──
          - id: auth-service-swagger
@@ -308,20 +308,21 @@ jwt:
 logging:
   level:
     root: INFO
-
-    # Gateway core → keep minimal
     org.springframework.cloud.gateway: INFO
-
-    # WebFlux → reduce noise
     org.springframework.web.reactive: WARN
-
-    # Netty → avoid connection spam
     reactor.netty: WARN
-
-    # Your app → keep visibility here
     com.founderlink.gateway: INFO
   file:
     name: logs/api-gateway.log
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
 
 
  # Swagger UI aggregation for all services
