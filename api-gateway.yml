@@ -201,7 +201,7 @@ rbac:
       roles: [FOUNDER, INVESTOR, COFOUNDER, ADMIN]
 
     - method: GET
-      path: /users/role
+      path: /users/role/*
       roles: [FOUNDER, INVESTOR, COFOUNDER, ADMIN]
 
     - method: GET
