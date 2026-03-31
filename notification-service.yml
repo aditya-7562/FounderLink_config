@@ -16,11 +16,11 @@ spring:
     properties:
       mail:
         smtp:
-          auth: true
+          auth: ${MAIL_SMTP_AUTH:true}
           ssl:
-            enable: false
+            enable: ${MAIL_SSL_ENABLE:true}
           starttls:
-            enable: true
+            enable: false
 
 
 resilience4j:
@@ -45,8 +45,6 @@ resilience4j:
 logging:
   level:
     com.founderlink.notification: DEBUG
-    org.springframework.mail: DEBUG
-    jakarta.mail: DEBUG
 
 # RabbitMQ queues
 rabbitmq:
