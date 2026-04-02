@@ -136,9 +136,6 @@ gateway:
     public-paths:
       - /auth/**
       - /eureka/**
-      - /startup
-      - /startup/search
-      - /startup/details/**
       #Swagger/OpenAPI endpoints (root and service-prefixed)
       - /v3/api-docs
       - /v3/api-docs/**
@@ -190,6 +187,10 @@ gateway:
       - /wallets/swagger-ui/**
       - /wallets/swagger-resources/**
       - /wallets/webjars/**
+    public-get-paths:
+      - /startup
+      - /startup/search
+      - /startup/details/**
 
 rbac:
   default-policy: DENY
