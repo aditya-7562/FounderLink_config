@@ -333,6 +333,10 @@ rbac:
       path: /notifications/*/read
       roles: [FOUNDER, INVESTOR, COFOUNDER, ADMIN]
 
+    - method: PATCH
+      path: /notifications/*/read
+      roles: [FOUNDER, INVESTOR, COFOUNDER, ADMIN]
+
     - method: POST
       path: /payments/create-order
       roles: [INVESTOR]
